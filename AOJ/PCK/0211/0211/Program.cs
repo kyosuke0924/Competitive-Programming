@@ -19,7 +19,7 @@ namespace _0211
                 long[] d = new long[n];
                 long[] v = new long[n];
 
-                long lcm = 0;
+                long lcm = 1;
                 long gcd = 0;
                 for (int i = 0; i < n; i++)
                 {
@@ -27,15 +27,8 @@ namespace _0211
                     long g = Gcd(items[0], items[1]);
                     d[i] = items[0] / g;
                     v[i] = items[1] / g;
-
-                    if (i == 0)
-                    { 
-                        lcm = d[i]; gcd = v[i];
-                    }
-                    else
-                    {
-                        lcm = Lcm(lcm, d[i]); gcd = Gcd(gcd, v[i]);
-                    }
+                    gcd = Gcd(gcd, v[i]);
+                    lcm = Lcm(lcm, d[i]);                  
                 }
 
                 for (int i = 0; i < n; i++)
