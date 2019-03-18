@@ -88,6 +88,24 @@ namespace CompProgLib
         }
 
         /// <summary>
+        /// 整数の約数を列挙する(未ソート)
+        /// </summary>
+        /// <param name="n">整数</param>
+        /// <returns>約数の列挙子</returns>
+        public static IEnumerable<long> GetDivisor(long n)
+        {
+            long boundary = (long)Math.Floor(Math.Sqrt(n));
+            for (int i = 1; i <= boundary; i++)
+            {
+                if (n % i == 0)
+                {
+                    yield return i;
+                    if (i != n / i) yield return n / i;
+                }
+            }
+        }
+
+        /// <summary>
         ///階乗
         /// </summary>
         public static long Factorial(long n, long mod = 0)
@@ -125,7 +143,7 @@ namespace CompProgLib
         /// <param name="a">値（法と互いに素であることが前提条件）</param>
         /// <param name="m">法</param>
         /// <returns></returns>
-        private static long modinv(long a, long m)
+        private static long Modinv(long a, long m)
         {
             long b = m;
             long u = 1;
