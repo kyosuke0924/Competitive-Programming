@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_Measure", "A_Measure\A_Measure.csproj", "{5F1FBED3-D43E-47DC-887F-944E582769C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B_Exchange", "B_Exchange\B_Exchange.csproj", "{8751E6BE-EC24-4C6C-B87C-FC35C64B0876}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_Align", "C_Align\C_Align.csproj", "{3EF2DA0F-6073-4C70-9C91-4FD64BF0C07C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F1FBED3-D43E-47DC-887F-944E582769C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1FBED3-D43E-47DC-887F-944E582769C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1FBED3-D43E-47DC-887F-944E582769C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1FBED3-D43E-47DC-887F-944E582769C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8751E6BE-EC24-4C6C-B87C-FC35C64B0876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8751E6BE-EC24-4C6C-B87C-FC35C64B0876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8751E6BE-EC24-4C6C-B87C-FC35C64B0876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8751E6BE-EC24-4C6C-B87C-FC35C64B0876}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF2DA0F-6073-4C70-9C91-4FD64BF0C07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF2DA0F-6073-4C70-9C91-4FD64BF0C07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF2DA0F-6073-4C70-9C91-4FD64BF0C07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF2DA0F-6073-4C70-9C91-4FD64BF0C07C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

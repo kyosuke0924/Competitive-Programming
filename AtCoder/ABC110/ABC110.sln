@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC110A - Maximize the Formula", "ABC110A - Maximize the Formula\ABC110A - Maximize the Formula.csproj", "{DB6185A9-CB6F-4085-838F-A8A9586FE0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{3092B3AA-B2D2-4287-BB67-749D9845D880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC110B - 1 Dimensional World's Tale", "ABC110B - 1 Dimensional World's Tale\ABC110B - 1 Dimensional World's Tale.csproj", "{E52DC1BC-16FC-4C43-8EF3-233EC9EF22D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC110C - String Transformation", "ABC110C - String Transformation\ABC110C - String Transformation.csproj", "{A7B620B7-2C8B-459E-81EF-5BCF1135894F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ABC110D - Factorization", "ABC110D - Factorization\ABC110D - Factorization.csproj", "{BCFFA6C7-844C-4229-89BD-E8465A4D5C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathX", "..\..\MathX\MathX.csproj", "{BDA983A5-F76C-4093-93A4-7F3DF9436DC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB6185A9-CB6F-4085-838F-A8A9586FE0DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6185A9-CB6F-4085-838F-A8A9586FE0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6185A9-CB6F-4085-838F-A8A9586FE0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6185A9-CB6F-4085-838F-A8A9586FE0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3092B3AA-B2D2-4287-BB67-749D9845D880}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3092B3AA-B2D2-4287-BB67-749D9845D880}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3092B3AA-B2D2-4287-BB67-749D9845D880}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3092B3AA-B2D2-4287-BB67-749D9845D880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E52DC1BC-16FC-4C43-8EF3-233EC9EF22D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52DC1BC-16FC-4C43-8EF3-233EC9EF22D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52DC1BC-16FC-4C43-8EF3-233EC9EF22D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52DC1BC-16FC-4C43-8EF3-233EC9EF22D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B620B7-2C8B-459E-81EF-5BCF1135894F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B620B7-2C8B-459E-81EF-5BCF1135894F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B620B7-2C8B-459E-81EF-5BCF1135894F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B620B7-2C8B-459E-81EF-5BCF1135894F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFFA6C7-844C-4229-89BD-E8465A4D5C08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFFA6C7-844C-4229-89BD-E8465A4D5C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFFA6C7-844C-4229-89BD-E8465A4D5C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFFA6C7-844C-4229-89BD-E8465A4D5C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA983A5-F76C-4093-93A4-7F3DF9436DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA983A5-F76C-4093-93A4-7F3DF9436DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA983A5-F76C-4093-93A4-7F3DF9436DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA983A5-F76C-4093-93A4-7F3DF9436DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
