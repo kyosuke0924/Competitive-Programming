@@ -190,7 +190,6 @@ namespace _0213
                     {
                         if (j > 0) Console.Write(' ');
                         Console.Write(ansMap[i, j]);
-
                     }
                     Console.Write(Environment.NewLine);
                 }
