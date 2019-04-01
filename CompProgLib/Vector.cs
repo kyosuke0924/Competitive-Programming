@@ -152,6 +152,38 @@ namespace CompProgLib
 
         }
 
+        /// <summary>
+        /// 四角形ABCDと点Pの内包判定
+        /// ※四角形ABCDは凸であることが前提
+        /// </summary>
+        /// <param name="ax">点Aのx座標</param>
+        /// <param name="ay">点Aのy座標</param>
+        /// <param name="bx">点Bのx座標/param>
+        /// <param name="by">点Bのy座標</param>
+        /// <param name="cx">点Cのx座標</param>
+        /// <param name="cy">点Cのy座標</param>
+        /// <param name="dx">点Dのx座標</param>
+        /// <param name="dy">点Dのy座標</param>
+        /// <param name="px">点Pのx座標</param>
+        /// <param name="py">点Pのy座標</param>
+        /// <returns></returns>
+        public static bool IsQuadrangleIntersected(double ax, double ay, double bx, double by, double cx, double cy, double dx, double dy,  double px,  double py)
+        {
+            Vector a = new Vector(ax, ay);
+            Vector b = new Vector(bx, by);
+            Vector c = new Vector(cx, cy);
+            Vector d = new Vector(dx, dy);
+            Vector p = new Vector(px, py);
+
+            double c1 = Vector.CrossProduct(b - a, p - b);
+            double c2 = Vector.CrossProduct(c - b, p - c);
+            double c3 = Vector.CrossProduct(d - c, p - d);
+            double c4 = Vector.CrossProduct(a - d, p - a);
+
+            return (c1 > 0 && c2 > 0 && c3 > 0 && c4 > 0) || (c1 < 0 && c2 < 0 && c3 < 0 && c4 < 0);
+
+        }
+
 
         #endregion Public Methods
 

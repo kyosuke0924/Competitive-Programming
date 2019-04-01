@@ -58,6 +58,7 @@
     <Compile Include="StringSearch.cs" />
     <Compile Include="Treap.cs" />
     <Compile Include="Tree.cs" />
+    <Compile Include="UnionFind.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="_Others.cs" />
   </ItemGroup>
