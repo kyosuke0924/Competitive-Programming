@@ -196,8 +196,7 @@ namespace _0215
 
             for (int i = 0, j; (j = 2 * i + 1) < n;)
             {
-                if ((j != n - 1) && (Buffer[j].CompareTo(Buffer[j + 1]) < 0))
-                    j++;
+                if ((j != n - 1) && (Buffer[j].CompareTo(Buffer[j + 1]) < 0))  j++;
                 if (Buffer[i].CompareTo(Buffer[j]) < 0)
                 {
                     T tmp = Buffer[j]; Buffer[j] = Buffer[i]; Buffer[i] = tmp;
