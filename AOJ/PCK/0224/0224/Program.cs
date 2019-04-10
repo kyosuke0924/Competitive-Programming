@@ -9,19 +9,17 @@ namespace _0224
     {
         public const string START = "H";
         public const string GOAL = "D";
+        public const string CAKESHOP = "C";
+        public const string LANDMARK = "L";
 
         public static Dictionary<string, Node> Adj { get; set; }
         public class Node
         {
             public List<KeyValuePair<string, int>> Vertex { get; internal set; }
-            public Node()
-            {
-                Vertex = new List<KeyValuePair<string, int>>();
-            }
+            public Node() { Vertex = new List<KeyValuePair<string, int>>(); }
         }
 
         public static Dictionary<string, int[]> distances;
-        public static int CakeShopCnt;
         public static int[] CakeCals;
 
         static void Main(string[] args)
@@ -37,7 +35,7 @@ namespace _0224
 
         private static void Init(int[] vs)
         {
-            CakeShopCnt = vs[0];
+            int CakeShopCnt = vs[0];
             CakeCals = RArInt();
 
             Adj = new Dictionary<string, Node>();
@@ -51,13 +49,13 @@ namespace _0224
 
             for (int i = 0; i < vs[0]; i++)
             {
-                string key = "C" + (i + 1).ToString();
+                string key = CAKESHOP + (i + 1).ToString();
                 Adj.Add(key, new Node());
                 distances.Add(key, new int[1 << CakeShopCnt]);
             }
             for (int i = 0; i < vs[1]; i++)
             {
-                string key = "L" + (i + 1).ToString();
+                string key = LANDMARK + (i + 1).ToString();
                 Adj.Add(key, new Node());
                 distances.Add(key, new int[1 << CakeShopCnt]);
 
@@ -70,10 +68,7 @@ namespace _0224
             }
             foreach (var distance in distances)
             {
-                for (int i = 0; i < distance.Value.Length; i++)
-                {
-                    distance.Value[i] = int.MaxValue;
-                }
+                for (int i = 0; i < distance.Value.Length; i++) distance.Value[i] = int.MaxValue;
             }
         }
 
@@ -82,7 +77,6 @@ namespace _0224
             public string V { get; set; }
             public int Distance { get; set; }
             public int Path { get; set; }
-
             public Candidate(string v, int d, int path) { Distance = d; V = v; Path = path; }
             public int CompareTo(Candidate other) { return -1 * Distance.CompareTo(other.Distance); }
         }
@@ -103,35 +97,28 @@ namespace _0224
 
                 foreach (KeyValuePair<string, int> nextV in Adj[v].Vertex)
                 {
-                    if (nextV.Key[0] == 'C')
+                    int nextP, nextD;
+                    if (nextV.Key[0] == CAKESHOP[0])
                     {
                         int curCakeShop = int.Parse(nextV.Key[1].ToString()) - 1;
                         if ((p & (1 << curCakeShop)) > 0) continue;
-                        int nextP = p | (1 << curCakeShop);
-                        int nextD = distances[v][p] + nextV.Value - CakeCals[curCakeShop];
-
-                        if (distances[nextV.Key][nextP] > nextD)
-                        {
-                            distances[nextV.Key][nextP] = nextD;
-                            pq.Enqueue(new Candidate(nextV.Key, nextD, nextP));
-                        }
+                        nextP = p | (1 << curCakeShop);
+                        nextD = distances[v][p] + nextV.Value - CakeCals[curCakeShop];
                     }
                     else
                     {
-                        int nextD = distances[v][p] + nextV.Value;
-
-                        if (distances[nextV.Key][p] > nextD)
-                        {
-                            distances[nextV.Key][p] = nextD;
-                            pq.Enqueue(new Candidate(nextV.Key, nextD, p));
-                        }
+                        nextP = p;
+                        nextD = distances[v][p] + nextV.Value;
+                    }
+                    if (distances[nextV.Key][nextP] > nextD)
+                    {
+                        distances[nextV.Key][nextP] = nextD;
+                        pq.Enqueue(new Candidate(nextV.Key, nextD, nextP));
                     }
                 }
             }
             return distances[GOAL].Min();
         }
-
-
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }
         static long RLong() { return long.Parse(Console.ReadLine().Trim()); }
@@ -148,12 +135,9 @@ namespace _0224
     {
 
         private List<T> Buffer { get; set; }
-
         public int Count { get { return Buffer.Count; } }
-
         public PriorityQueue() { Buffer = new List<T>(); }
         public PriorityQueue(int capacity) { Buffer = new List<T>(capacity); }
-
 
         /// <summary>
         /// ヒープ化されている配列リストに新しい要素を追加する。
