@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _0276
+namespace A
 {
     class Program
     {
         static void Main(string[] args)
         {
-	    List<int> t = new List<int>();
-		
-            for (int i = 0; i < 7; i++)
+            int[] vs = RArInt();
+
+            int cnt = 0;
+            for (int i = vs[0]; i < vs[2] + 1; i += vs[0])
             {
-                int[] vs = RArInt();
-                Console.WriteLine(vs[0] - vs[1]);
+                cnt += vs[1];
             }
+            Console.WriteLine(cnt);
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }

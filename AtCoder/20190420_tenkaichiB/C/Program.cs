@@ -3,19 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _0276
+namespace C
 {
     class Program
     {
         static void Main(string[] args)
         {
-	    List<int> t = new List<int>();
-		
-            for (int i = 0; i < 7; i++)
+            int n = RInt();
+            string s = RSt();
+            int resA = s.Count(x => x == '#');
+            int resB = s.Count(x => x == '.');
+            int allChange = Math.Min(resA, resB);
+
+            int[] sharpCnts = new int[s.Length];
+            sharpCnts[0] = s[0] == '#' ? 1 : 0;
+            for (int i = 1; i < s.Length; i++)
             {
-                int[] vs = RArInt();
-                Console.WriteLine(vs[0] - vs[1]);
+                if (s[i] == '#')
+                {
+                    sharpCnts[i] = sharpCnts[i - 1] + 1;
+                }
+                else
+                {
+                    sharpCnts[i] = sharpCnts[i - 1];
+                }
             }
+
+            int res = int.MaxValue;
+            for (int i = 0; i < s.Length - 1; i++)
+            {
+                if (s[i] == '.' && s[i + 1] == '#')
+                {
+                    res = Math.Min(res, sharpCnts[i] + ((s.Length - (i + 1)) - (sharpCnts[s.Length - 1] - sharpCnts[i + 1] + 1)));
+                }
+            }
+            Console.WriteLine(Math.Min(res, allChange));
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }

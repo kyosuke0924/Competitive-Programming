@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _0276
+namespace B
 {
     class Program
     {
         static void Main(string[] args)
         {
-	    List<int> t = new List<int>();
-		
-            for (int i = 0; i < 7; i++)
+            int n = RInt();
+            int[] vs = RArInt();
+            int[] cs = RArInt();
+
+            int value = 0;
+            for (int i = 0; i < n; i++)
             {
-                int[] vs = RArInt();
-                Console.WriteLine(vs[0] - vs[1]);
+                if (vs[i] >= cs[i])
+                {
+                    value += vs[i] - cs[i];
+                }
             }
+            Console.WriteLine(value);
         }
+
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }
         static long RLong() { return long.Parse(Console.ReadLine().Trim()); }

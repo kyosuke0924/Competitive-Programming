@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _0276
+namespace D
 {
     class Program
     {
         static void Main(string[] args)
         {
-	    List<int> t = new List<int>();
-		
-            for (int i = 0; i < 7; i++)
+            long n = RLong();
+            long[] a = RArLong();
+
+            long cntMinus = a.Count(x => x < 0);
+
+            long res = 0;
+            res = a.Sum(x => Math.Abs(x));
+            if (cntMinus % 2 != 0)
             {
-                int[] vs = RArInt();
-                Console.WriteLine(vs[0] - vs[1]);
+                long absMin = a.Select(x => Math.Abs(x)).OrderBy(x => x).First();
+                res -= absMin * 2;
             }
+            Console.WriteLine(res);
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }
