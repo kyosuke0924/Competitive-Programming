@@ -14,7 +14,7 @@ namespace _0233
                 int n = RInt();
                 if (n == 0) break;
 
-                string res = string.Empty;
+                Stack<string> res = new Stack<string>();
                 while (n != 0)
                 {
                     int q = n / -10;
@@ -26,10 +26,10 @@ namespace _0233
                         q += 1;
                     }
 
-                    res += r.ToString();
+                    res.Push(r.ToString());
                     n = q;
                 }
-                Console.WriteLine(WAr(res.Reverse(),string.Empty));
+                Console.WriteLine(WAr(res, string.Empty));
             }
         }
         static string RSt() { return Console.ReadLine(); }
