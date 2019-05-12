@@ -9,6 +9,20 @@ namespace D
     {
         static void Main(string[] args)
         {
+            long n = RLong();
+            int rootN = (int)Math.Sqrt(n);
+
+            long cnt = 0;
+            for (int r = 1; r <= rootN + 1; r++)
+            {
+                long pq = n - r;
+                long p = pq / r;
+                if (n == r * (p + 1) && n % r == 0 && pq % r == 0 && p > r)
+                {
+                    cnt += p;
+                }
+            }
+            Console.WriteLine(cnt);
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }

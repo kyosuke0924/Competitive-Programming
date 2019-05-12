@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace A
+namespace E
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int[] vs = RArInt();
-            Console.WriteLine(vs[0] - vs[1] + 1);
+            int n = RInt();
+            long[] vs = RArLong();
+
+            long res = 0;
+            for (int i = 0; i < vs.Length; i++)
+            {
+                res ^= vs[i];
+            }
+
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }

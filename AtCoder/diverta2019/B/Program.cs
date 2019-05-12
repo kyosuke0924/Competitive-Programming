@@ -9,6 +9,22 @@ namespace B
     {
         static void Main(string[] args)
         {
+            int[] vs = RArInt();
+            int r = vs[0];
+            int g = vs[1];
+            int b = vs[2];
+            int n = vs[3];
+
+            int res = 0;
+            for (int i = 0; i <= n; i += r)
+            {
+                for (int j = 0; j <= n; j += g)
+                {
+                    if (i + j <= n && (n - (i + j)) % b == 0) res++;
+                }
+            }
+
+            Console.WriteLine(res);
         }
         static string RSt() { return Console.ReadLine(); }
         static int RInt() { return int.Parse(Console.ReadLine().Trim()); }
