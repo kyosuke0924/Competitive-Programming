@@ -32,12 +32,12 @@ namespace _0236
             {
                 int[] wh = RArInt();
                 if (wh.Sum() == 0) break;
-                if (!Init(wh) || !IsBlkCellContinuous())
+                if (!Init(wh))
                 {
                     Console.WriteLine("No");
                     continue;
                 }
-                Console.WriteLine(CanMakeCircuit(0) ? "Yes" : "No");
+                Console.WriteLine(CanMakeCircuit(0) && IsLineContinuous() ? "Yes" : "No");
             }
         }
 
@@ -95,40 +95,12 @@ namespace _0236
             return blankCnt;
         }
 
-        private static bool IsBlkCellContinuous()
-        {
-            bool[,] visited = new bool[map.GetLength(0), map.GetLength(1)];
-
-            Queue<Tuple<int, int>> q = new Queue<Tuple<int, int>>();
-            q.Enqueue(blkCells[0]);
-            visited[blkCells[0].Item1, blkCells[1].Item2] = true;
-
-            int contCnt = 0;
-            while (q.Count() > 0)
-            {
-                var cur = q.Dequeue();
-                contCnt++;
-
-                for (int k = 0; k < di.Length; k++)
-                {
-                    int ni = cur.Item1 + di[k];
-                    int nj = cur.Item2 + dj[k];
-                    if (map[ni, nj] == 1 && !visited[ni, nj])
-                    {
-                        q.Enqueue(new Tuple<int, int>(ni, nj));
-                        visited[ni, nj] = true;
-                    }
-                }
-            }
-
-            //空白セルが分断されてる場合はNG
-            if (blkCells.Count() != contCnt) return false;
-            else return true;
-        }
-
         private static bool CanMakeCircuit(int v)
         {
-            if (v == blkCells.Count()) return true;
+            if (v == blkCells.Count())
+            {
+                return IsLineContinuous(); 
+            }
             for (int i = 0; i < pieces.Length; i++)
             {
                 if (!CanSetPiece(v, pieces[i])) continue;
@@ -177,6 +149,39 @@ namespace _0236
         private static void RemovePiece(int v)
         {
             SetDefaultStutas(blkCells[v].Item1, blkCells[v].Item2);
+        }
+
+        private static bool IsLineContinuous()
+        {
+            bool[,] visited = new bool[map.GetLength(0), map.GetLength(1)];
+
+            Queue<Tuple<int, int>> q = new Queue<Tuple<int, int>>();
+            q.Enqueue(blkCells[0]);
+            visited[blkCells[0].Item1, blkCells[1].Item2] = true;
+
+            int contCnt = 0;
+            while (q.Count() > 0)
+            {
+                var cur = q.Dequeue();
+                contCnt++;
+
+                for (int k = 0; k < di.Length; k++)
+                {
+                    if (statuses[cur.Item1, cur.Item2][k] != Status.MustJoin) continue;
+
+                    int ni = cur.Item1 + di[k];
+                    int nj = cur.Item2 + dj[k];
+                    if (!visited[ni, nj])
+                    {
+                        q.Enqueue(new Tuple<int, int>(ni, nj));
+                        visited[ni, nj] = true;
+                    }
+                }
+            }
+
+            //閉路をたどって全ての空白セルに到達できない場合は、単一閉路でないためNG
+            if (blkCells.Count() != contCnt) return false;
+            else return true;
         }
 
         static string RSt() { return Console.ReadLine(); }
