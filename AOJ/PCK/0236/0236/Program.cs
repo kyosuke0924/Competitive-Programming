@@ -37,7 +37,7 @@ namespace _0236
                     Console.WriteLine("No");
                     continue;
                 }
-                Console.WriteLine(CanMakeCircuit(0) && IsLineContinuous() ? "Yes" : "No");
+                Console.WriteLine(CanMakeCircuit(0) ? "Yes" : "No");
             }
         }
 
@@ -99,7 +99,7 @@ namespace _0236
         {
             if (v == blkCells.Count())
             {
-                return IsLineContinuous(); 
+                return IsSingleCircuit(); 
             }
             for (int i = 0; i < pieces.Length; i++)
             {
@@ -151,7 +151,7 @@ namespace _0236
             SetDefaultStutas(blkCells[v].Item1, blkCells[v].Item2);
         }
 
-        private static bool IsLineContinuous()
+        private static bool IsSingleCircuit()
         {
             bool[,] visited = new bool[map.GetLength(0), map.GetLength(1)];
 
