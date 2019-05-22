@@ -61,7 +61,6 @@ namespace _0243
         private static int GetChangeCount(char[,] startMap)
         {
             Queue<State> q = new Queue<State>();
-
             State cur = new State(0, startMap, changeCells, '\0');
             if (cur.IsSame) return cur.Cnt;
             q.Enqueue(cur);
@@ -70,7 +69,7 @@ namespace _0243
             {
                 cur = q.Dequeue();
                 changeCells = new bool[h, w];
-                Dfs(0, 0, cur.Map);
+                GetchangeCells(0, 0, cur.Map);
                 foreach (var color in colors)
                 {
                     if (color != cur.Map[0, 0])
@@ -81,11 +80,10 @@ namespace _0243
                     }
                 }
             }
-
-            return 0;
+            return 0; //ダミー
         }
 
-        private static void Dfs(int i, int j, char[,] map)
+        private static void GetchangeCells(int i, int j, char[,] map)
         {
             changeCells[i, j] = true;
             for (int k = 0; k < di.Length; k++)
@@ -93,7 +91,7 @@ namespace _0243
                 int nextI = i + di[k];
                 int nextJ = j + dj[k];
                 if (!IsInArea(nextI, nextJ)) continue;
-                if (!changeCells[nextI, nextJ] && map[nextI, nextJ] == map[0, 0]) Dfs(nextI, nextJ, map);
+                if (!changeCells[nextI, nextJ] && map[nextI, nextJ] == map[0, 0]) GetchangeCells(nextI, nextJ, map);
             }
         }
 
