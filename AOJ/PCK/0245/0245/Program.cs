@@ -18,7 +18,6 @@ namespace _0245
             public int Time { get; set; }
             public int Amount { get; set; }
             public int GotItem { get; set; }
-
             public State(int i, int j, int time, int amount, int gotItem)
             {
                 I = i;
@@ -34,7 +33,6 @@ namespace _0245
             public int Price { get; set; }
             public int Start { get; set; }
             public int End { get; set; }
-
             public Item(int price, int start, int end)
             {
                 Price = price;
@@ -99,18 +97,13 @@ namespace _0245
                 State cur = q.Dequeue();
                 res = Math.Max(res, cur.Amount);
 
-                if (cur.GotItem == (int)Math.Pow(2, Items.Count()) - 1)
-                {
-                    break;
-                }
-
+                if (cur.GotItem == (int)Math.Pow(2, Items.Count()) - 1) break;
                 if (cur.Time >= maxE) continue;
                 if (visited[cur.I, cur.J, cur.GotItem, cur.Time]) continue;
                 visited[cur.I, cur.J, cur.GotItem, cur.Time] = true;
 
                 int nAmount = cur.Amount;
                 int nItems = cur.GotItem;
-
                 for (int i = 0; i < di.Length; i++)
                 {
                     int nI = cur.I + di[i];
@@ -134,7 +127,6 @@ namespace _0245
                         q.Enqueue(new State(nI, nJ, cur.Time + 1, nAmount, nItems));
                     }
                 }
-
             }
 
             return res;
