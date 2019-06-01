@@ -9,28 +9,23 @@ namespace _0246
     {
 
         static public int[] buns;
-        static int res;
         static private List<int[]> ptn = new List<int[]>();
 
         static void Main(string[] args)
         {
             MakePtn(new List<long>(), 0);
-            List<string> input = new List<string>();
-            input = new List<string>();
-
             while (true)
             {
-
                 int n = RInt();
                 if (n == 0) break;
                 int[] vs = RArInt();
-
-                res = 0;
+            
                 buns = new int[10];
                 for (int i = 0; i < vs.Length; i++) buns[vs[i]]++;
 
+                int res = 0;
                 res += GetTwoPairs();
-                res += GetOtherPairs(buns, buns.Select((x, i) => i * buns[i]).Sum(), new Dictionary<ulong, int>());
+                res += GetOtherGroups(buns, new Dictionary<ulong, int>());
                 Console.WriteLine(res);
             }
         }
@@ -40,10 +35,7 @@ namespace _0246
             if (sum == 10)
             {
                 int[] cnts = new int[10];
-                for (int i = 0; i < vs.Count(); i++)
-                {
-                    cnts[vs[i]]++;
-                }
+                for (int i = 0; i < vs.Count(); i++) cnts[vs[i]]++;
                 ptn.Add(cnts);
             }
             else
@@ -73,7 +65,7 @@ namespace _0246
             return res;
         }
 
-        private static int GetOtherPairs(int[] rems, int sum, Dictionary<ulong, int> memo)
+        private static int GetOtherGroups(int[] rems, Dictionary<ulong, int> memo)
         {
             ulong bitRems = ChangeIArrToBit(rems);
             if (memo.ContainsKey(bitRems)) return memo[bitRems];
@@ -85,7 +77,7 @@ namespace _0246
                 Array.Copy(rems, newRems, rems.Length);
                 if (RemoveRems(newRems, ptn[i]))
                 {
-                    cnt = Math.Max(cnt, 1 + GetOtherPairs(newRems, sum - 10, memo));
+                    cnt = Math.Max(cnt, 1 + GetOtherGroups(newRems, memo));
                 }
             }
             memo.Add(bitRems, cnt);
@@ -123,4 +115,5 @@ namespace _0246
         static string WAr<T>(IEnumerable<T> array, string sep = " ") { return string.Join(sep, array.Select(x => x.ToString()).ToArray()); }
     }
 }
+
 
