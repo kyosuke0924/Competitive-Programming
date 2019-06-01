@@ -33,10 +33,10 @@ namespace _0251
                     int v = vs[1] - 1;
 
                     if (uf.IsSameGroup(u, v)) res = false;
+                    uf.Unite(u, v);
                     degree[u]++;
                     degree[v]++;
                     if (degree[u] >= 3 || degree[v] >= 3) res = false;
-                    uf.Unite(u, v);
                 }
             }
             return res;
