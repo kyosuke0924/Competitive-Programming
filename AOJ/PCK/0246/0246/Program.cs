@@ -19,43 +19,11 @@ namespace _0246
             input = new List<string>();
 
             while (true)
-            {   
-                string sn = string.Empty;
-                int n;
-                int[] vs;
-                try
-                {
-                    sn = Console.ReadLine().Trim();
-                    n = int.Parse(sn);
-                    if (n == 0) break;
+            {
 
-                    sn = Console.ReadLine().Trim();
-                    vs = Array.ConvertAll(sn.Split(' '), e => int.Parse(e));
-                    if(n != vs.Length)
-                    {
-                        throw new Exception();
-                    }
-                }
-                catch (Exception)
-                {
-                    sn = Console.ReadLine().Trim();
-                    sn = Console.ReadLine().Trim();
-                    //input.Add(sn.Replace(' ', '_'));
-                    //throw new Exception(WAr(input, ";"));
-
-                    n = 100;
-                    sn = "9 6 1 6 3 1 9 4 6 8 " +
-                         "6 1 8 5 9 3 6 4 8 1 " +
-                         "1 7 6 5 7 3 4 6 8 5 " +
-                         "1 4 5 9 7 8 1 3 8 6 " +
-                         "5 3 8 7 9 4 3 5 4 2 " +
-                         "4 8 3 4 8 6 1 8 5 9 " +
-                         "3 8 4 8 7 9 1 9 6 7 " +
-                         "6 5 8 3 3 7 8 2 1 2 " +
-                         "9 5 2 8 6 3 6 4 9 1 " +
-                         "7 1 4 3 2 1 3 2 9 8";
-                    vs = Array.ConvertAll(sn.Split(' '), e => int.Parse(e));
-                }
+                int n = RInt();
+                if (n == 0) break;
+                int[] vs = RArInt();
 
                 res = 0;
                 buns = new int[10];
