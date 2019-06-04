@@ -47,5 +47,19 @@ namespace CompProgLib
             return Math.Abs((p1x - p3x) * (p2y - p3y) - (p2x - p3x) * (p1y - p3y)) / 2;
         }
 
+        /// <summary>
+        /// ビットの立っている個数をカウントする
+        /// </summary>
+        /// <param name="bits">int型整数</param>
+        /// <returns></returns>
+        private static int BitCount(int bits)
+        {
+            bits = (bits & 0x55555555) + (bits >> 1 & 0x55555555);    //  2bitごとに計算
+            bits = (bits & 0x33333333) + (bits >> 2 & 0x33333333);    //  4bitごとに計算
+            bits = (bits & 0x0f0f0f0f) + (bits >> 4 & 0x0f0f0f0f);    //  8bitごとに計算
+            bits = (bits & 0x00ff00ff) + (bits >> 8 & 0x00ff00ff);    //  16ビットごとに計算   
+            return (bits & 0x0000ffff) + (bits >> 16);
+        }
+
     }
 }
