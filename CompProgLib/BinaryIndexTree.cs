@@ -7,30 +7,23 @@ namespace CompProgLib
 {
     class BinaryIndexTree　//添え字1始まり
     {
-        private readonly int N;
-        private readonly int[] bit;
+        private int N { get; set; }
+        private int[] Bit { get; set; }
 
         public BinaryIndexTree(int n)
         {
-            N = n;
-            bit = new int[n + 1];
+            N = n; Bit = new int[n + 1];
         }
 
         public void Add(int idx, int value)
         {
-            for (int i = idx; i <= N; i += i & -i)
-            {
-                bit[i] += value;
-            }
+            for (int i = idx; i <= N; i += i & -i) Bit[i] += value;
         }
 
         public int Sum(int idx) //bit[1]～bit[idx]までの和
         {
             int ret = 0;
-            for (int i = idx; i > 0; i -= i & -i)
-            {
-                ret += bit[i];
-            }
+            for (int i = idx; i > 0; i -= i & -i) ret += Bit[i];
             return ret;
         }
     }
