@@ -23,10 +23,9 @@ namespace CompProgLib
             }
             else
             {
-                foreach (var x in items)
+                foreach (var item in items.Select((x, i) => new { x, i }))
                 {
-                    var xs = items.Where(y => !y.Equals(x));
-                    foreach (var c in GetPermutation(xs, r - 1)) yield return Concat(x, c);
+                    foreach (var c in GetPermutation(items.Where((x, i) => i != item.i), r - 1)) yield return Concat(item.x, c);
                 }
             }
         }
